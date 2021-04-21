@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Routine from './components/Routine';
+import Data from './data.json';
+import Car from './components/Car';
+
+//console.log(Data);
+
+let items = [];
+for(let item = 0; item < Data.length; ++item) {
+  items.push(<Routine cardTitle={Data[item].title} cardContent={Data[item].content} key = {item}/>);
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <div>
+    
+    {items}
+    <Car />
+    
+  </div>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
